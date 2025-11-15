@@ -86,7 +86,13 @@ public class TimeManager : MonoBehaviour {
     void UpdateTimeOfDay() {
         service.UpdateTime(Time.deltaTime);
         if (timeText != null) {
-            timeText.text = service.CurrentTime.ToString("hh:mm");
+            timeText.text = RoundDown(service.CurrentTime).ToString("hh:mm");
         }
+    }
+
+    DateTime RoundDown(DateTime dt)
+    {
+        var delta = dt.Minute % 10;
+        return dt.AddMinutes(-delta);
     }
 }
