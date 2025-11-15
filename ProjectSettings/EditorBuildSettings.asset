@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Forest - Calm.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Main Menu.unity
+    guid: 15b4b530c853e984bb3985971744bda8
   - enabled: 1
-    path: Assets/Scenes/Forest - Crowded.unity
-    guid: 11b4b9bbda5a1064185fbca29cd0ebe3
+    path: Assets/Scenes/Stonehenge w move.unity
+    guid: c91f416872ab8c34284e3b2c240ab781
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
