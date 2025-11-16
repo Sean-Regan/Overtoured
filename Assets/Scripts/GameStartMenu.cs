@@ -7,6 +7,7 @@ public class GameStartMenu : MonoBehaviour
 {
     [Header("UI Pages")]
     public GameObject mainMenu;
+    public GameObject levelSelect;
     public GameObject options;
     public GameObject about;
 
@@ -24,7 +25,7 @@ public class GameStartMenu : MonoBehaviour
         EnableMainMenu();
 
         //Hook events
-        startButton.onClick.AddListener(StartGame);
+        startButton.onClick.AddListener(EnableLevelSelect);
         optionButton.onClick.AddListener(EnableOption);
         aboutButton.onClick.AddListener(EnableAbout);
         quitButton.onClick.AddListener(QuitGame);
@@ -40,15 +41,18 @@ public class GameStartMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartGame()
+    public void EnableLevelSelect()
     {
-        HideAll();
-        SceneTransitionManager.singleton.GoToSceneAsync(1);
+        mainMenu.SetActive(false);
+        levelSelect.SetActive(true);
+        options.SetActive(false);
+        about.SetActive(false);
     }
 
     public void HideAll()
     {
         mainMenu.SetActive(false);
+        levelSelect.SetActive(false);
         options.SetActive(false);
         about.SetActive(false);
     }
@@ -56,18 +60,21 @@ public class GameStartMenu : MonoBehaviour
     public void EnableMainMenu()
     {
         mainMenu.SetActive(true);
+        levelSelect.SetActive(false);
         options.SetActive(false);
         about.SetActive(false);
     }
     public void EnableOption()
     {
         mainMenu.SetActive(false);
+        levelSelect.SetActive(false);
         options.SetActive(true);
         about.SetActive(false);
     }
     public void EnableAbout()
     {
         mainMenu.SetActive(false);
+        levelSelect.SetActive(false);
         options.SetActive(false);
         about.SetActive(true);
     }
