@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Unity.VisualScripting;
 
 public class TimeManager : MonoBehaviour {
     [SerializeField] TextMeshProUGUI timeText;
@@ -17,6 +18,9 @@ public class TimeManager : MonoBehaviour {
     [SerializeField] Color nightAmbientLight;
     [SerializeField] Volume volume;
     [SerializeField] Material skyboxMaterial;
+
+    [SerializeField] GameObject people;
+    bool peopleEnabled = false;
     
     ColorAdjustments colorAdjustments;
     
@@ -42,7 +46,7 @@ public class TimeManager : MonoBehaviour {
     void Start() {
         service = new TimeService(timeSettings);
         volume.profile.TryGet(out colorAdjustments);
-        OnSunrise += () => Debug.Log("Sunrise");
+        OnSunrise += () => TogglePeople();
         OnSunset += () => Debug.Log("Sunset");
         OnHourChange += () => Debug.Log("Hour change");
     }
@@ -58,6 +62,20 @@ public class TimeManager : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Minus)) {
             timeSettings.timeMultiplier /= 2;
+        }
+    }
+
+    void TogglePeople()
+    {
+        if(peopleEnabled)
+        {
+            people.gameObject.SetActive(false);
+            peopleEnabled = false;
+        }
+        else
+        {
+            people.gameObject.SetActive(true);
+            peopleEnabled = true;
         }
     }
 
