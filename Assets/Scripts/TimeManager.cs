@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour {
     [SerializeField] TextMeshProUGUI timeText;
@@ -47,8 +48,6 @@ public class TimeManager : MonoBehaviour {
         service = new TimeService(timeSettings);
         volume.profile.TryGet(out colorAdjustments);
         OnSunrise += () => TogglePeople();
-        OnSunset += () => Debug.Log("Sunset");
-        OnHourChange += () => Debug.Log("Hour change");
     }
 
     void Update() {
@@ -56,13 +55,6 @@ public class TimeManager : MonoBehaviour {
         RotateSun();
         UpdateLightSettings();
         UpdateSkyBlend();
-        
-        if (Input.GetKeyDown(KeyCode.Equals)) {
-            timeSettings.timeMultiplier *= 2;
-        }
-        if (Input.GetKeyDown(KeyCode.Minus)) {
-            timeSettings.timeMultiplier /= 2;
-        }
     }
 
     void TogglePeople()

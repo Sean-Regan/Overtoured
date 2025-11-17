@@ -22,11 +22,11 @@ public class GameStartMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnableMainMenu();
+        EnableControls();
 
         //Hook events
         startButton.onClick.AddListener(EnableLevelSelect);
-        controlsButton.onClick.AddListener(EnableOption);
+        controlsButton.onClick.AddListener(EnableControls);
         aboutButton.onClick.AddListener(EnableAbout);
         quitButton.onClick.AddListener(QuitGame);
 
@@ -64,7 +64,7 @@ public class GameStartMenu : MonoBehaviour
         controls.SetActive(false);
         about.SetActive(false);
     }
-    public void EnableOption()
+    public void EnableControls()
     {
         mainMenu.SetActive(false);
         levelSelect.SetActive(false);
